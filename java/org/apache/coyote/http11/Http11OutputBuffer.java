@@ -44,6 +44,7 @@ public class Http11OutputBuffer implements HttpOutputBuffer {
      */
     protected static final StringManager sm = StringManager.getManager(Http11OutputBuffer.class);
 
+    protected static final HttpMessages httpMessages = new HttpMessages(sm);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -352,8 +353,7 @@ public class Http11OutputBuffer implements HttpOutputBuffer {
 
         headerBuffer.put(Constants.SP);
 
-        write(HttpMessages.getInstance(
-                response.getLocale()).getMessage(status));
+        write(httpMessages.getMessage(status));
 
         headerBuffer.put(Constants.CR).put(Constants.LF);
     }
